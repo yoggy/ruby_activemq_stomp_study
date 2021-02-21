@@ -9,8 +9,10 @@ conf = {
 
 client = Stomp::Client.new(conf)
 
-client.subscribe("/queue/mine") do |msg|
-  puts msg
+client.subscribe("/queue/mine.>") do |msg|
+  puts "receive : " + msg.body.split(",")[0]
 end
 client.join
 
+
+# see also.. wildcards https://activemq.apache.org/wildcards
