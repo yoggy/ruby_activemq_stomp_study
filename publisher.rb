@@ -10,7 +10,7 @@ conf = {
 client = Stomp::Client.new(conf)
 
 count = 0
-payload_size = 1 * 1024 * 1024
+payload_size = 1 * 1024
 payload = "a" * payload_size
 
 loop do 
@@ -21,7 +21,7 @@ loop do
   msg = "b_count=#{count}"
   puts "publish msg=#{msg}"
   client.publish("/queue/mine.b", msg + "," + payload)
-#  sleep 0.5
+  sleep 0.5
   count += 1
 end
 
